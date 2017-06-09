@@ -13,7 +13,7 @@ This is a collection of deep learning resources for what our lab is interested i
 
 
 ### Courses
-* stanford - [CS 20SI: Tensorflow for Deep Learning Research](http://web.stanford.edu/class/cs20si/index.html)
+* Stanford - [CS 20SI: Tensorflow for Deep Learning Research](http://web.stanford.edu/class/cs20si/index.html)
 * Stanford - [CS231n: Convolutional Neural Networks for Visual Recognition](http://cs231n.stanford.edu/)
 * UC Berkeley - [Stat212b: Topics Course on Deep Learning](http://joanbruna.github.io/stat212b/)
 * Peking University - [Statistical Learning](http://www.math.pku.edu.cn/teachers/yaoy/Fall2015/)
