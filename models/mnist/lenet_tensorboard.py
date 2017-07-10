@@ -5,7 +5,7 @@ import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 
 
-log_dir = '/tmp/tensorflow/MNIST'
+log_dir = '/tmp/tensorflow/logs/MNIST_with_summaries'
 if os.path.exists(log_dir):
     shutil.rmtree(log_dir)
 mnist = input_data.read_data_sets('MNIST_data', one_hot=True)
@@ -59,13 +59,13 @@ def nn_layer(input_tensor, input_shape, output_shape, layer_name,
     else:
         return h, W, b
 
-# initial
-sess = tf.Session()
 # build tensors
 x = tf.placeholder(tf.float32, [None, 784])
 y_ = tf.placeholder(tf.float32, [None, 10])
-x_image = tf.reshape(x, [-1, 28, 28, 1])
-
+with tf.name_scope('input_image'):
+    x_image = tf.reshape(x, [-1, 28, 28, 1])
+    tf.summary.image('input', x_image, 6)
+    
 # First Convolutional Layer
 layer1_num_conv = 32
 layer1_input_shape = [5, 5, 1, layer1_num_conv]
@@ -111,12 +111,14 @@ with tf.name_scope('accuracy'):
     accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
     tf.summary.scalar('accuracy', accuracy)
 
+# initial session
+sess = tf.Session()
+sess.run(tf.global_variables_initializer())
 # merge tf.summary
 merged = tf.summary.merge_all()
 train_writer = tf.summary.FileWriter(os.path.join(log_dir, 'train'), sess.graph)
 test_writer = tf.summary.FileWriter(os.path.join(log_dir, 'test'))
-
-tf.global_variables_initializer().run()
+saver = tf.train.Saver()
 
 def feed_dict(train):
     if train:
@@ -137,12 +139,17 @@ for i in range(max_epoch):
     if i % 100 == 0:
         test_summary, test_acc = sess.run([merged, accuracy], feed_dict=feed_dict(train=False))
         test_writer.add_summary(test_summary, i)
+        run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
+        run_metadata = tf.RunMetadata()
         train_summary, _ = sess.run([merged, train_step], feed_dict=feed_dict(train=True))
+        train_writer.add_run_metadata(run_metadata, 'step{0}'.format(i))
         train_writer.add_summary(train_summary, i)
-        print("step {0}, testing accuracy {1}".format(i, test_acc))
+        print("step {0}, testing accuracy {1:.4f}".format(i, test_acc))
     else:
         summary, _ = sess.run([merged, train_step], feed_dict=feed_dict(train=True))
         train_writer.add_summary(summary, i)
+    if i % 1000 == 0:
+        saver.save(sess, os.path.join(log_dir, 'model-step-{0}.ckpt'.format(i)), i)
 
 test_summary, test_acc = sess.run([merged, accuracy],
                                   feed_dict=feed_dict(False))
