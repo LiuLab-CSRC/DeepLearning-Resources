@@ -1,6 +1,6 @@
 # DeepLearning-Resources
 
-This is a collection of deep learning resources for what our lab is interested in.
+This is a collection of deep learning resources.
 
 
 ### Table of Contents
