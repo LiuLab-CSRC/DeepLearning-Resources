@@ -1,6 +1,6 @@
-# DeepLearning-Resources
+# MachineLearning-Resources
 
-This is a collection of deep learning resources.
+This is a collection of machine learning and deep learning resources.
 
 
 ### Table of Contents
@@ -17,6 +17,7 @@ This is a collection of deep learning resources.
 * Stanford - [CS231n: Convolutional Neural Networks for Visual Recognition](http://cs231n.stanford.edu/)
 * UC Berkeley - [Stat212b: Topics Course on Deep Learning](http://joanbruna.github.io/stat212b/)
 * Peking University - [Statistical Learning](http://www.math.pku.edu.cn/teachers/yaoy/Fall2015/)
+* Harvard - [CS109: Data Science](https://github.com/cs109)
 
 
 ### Videos
@@ -28,7 +29,7 @@ This is a collection of deep learning resources.
     - Keras - Deep Learning library for Theano and TensorFlow. [`homepage`](https://keras.io/)
     - PyTorch - Tensors and Dynamic neural networks in Python with strong GPU acceleration. [`homepage`](http://pytorch.org/) [`github`](https://github.com/pytorch/pytorch)
     - Scikit-Learn - Machine learning in Python. [`homepage`](http://scikit-learn.org)
-    - Theano - Mathematical library in Python, maintained by LISA lab. [`homepage`](http://deeplearning.net/software/theano/) 
+    - Theano - Mathematical library in Python, maintained by LISA lab. [`homepage`](http://deeplearning.net/software/theano/)
 - `C++`
     - Tensorflow - An open-source software library for Machine Intelligence. [`homepage`](https://www.tensorflow.org/) [`github`](https://github.com/tensorflow/tensorflow)
     - Caffe2 - A New Lightweight, Modular, and Scalable Deep Learning Framework. [`homepage`](https://caffe2.ai) [`github`](https://github.com/caffe2/caffe2)
@@ -53,3 +54,4 @@ This is a collection of deep learning resources.
 
 
 ### Awesome Projects
+* [A visual introduction to machine learning](http://www.r2d3.us)
